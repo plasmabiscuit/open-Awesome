@@ -22,6 +22,7 @@ All the context and documentation a dumbass LLM might need to not fuckup my dock
 
 - Docker Desktop runs inside WSL; use `\\wsl$\docker-desktop-data` for volume inspection and keep model paths on `F:\.ollama\models` as configured below.
 - When copying overlays, translate Windows paths (e.g., `C:\workspace\openwebui-custom\static`) to the container with `docker cp` instead of relying on bind mounts that expect Linux-style paths.
+- For a step-by-step localhost setup on Windows with WSL and Docker Desktop, see [Windows Localhost Quickstart](Documentation/Essential/Docker/WindowsLocalhost.md).
 
 # Host System Info
 
