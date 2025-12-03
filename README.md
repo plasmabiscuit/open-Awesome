@@ -5,7 +5,7 @@ All the context and documentation a dumbass LLM might need to not fuckup my dock
 
 # Codespace quickstart
 
-- **Base image & resources:** Start from the CUDA-enabled image `ghcr.io/open-webui/open-webui:cuda` so GPU workflows just work. Allocate at least 4 vCPUs, 16 GB RAM, and a GPU with ~8 GB VRAM for smoother model loads and RAG indexing.
+- **Base image & resources:** Start from the CUDA-enabled image `ghcr.io/open-webui/open-webui:cuda` so GPU workflows  work. Allocate at least 4 vCPUs, 16 GB RAM, and a GPU with ~8 GB VRAM for smoother model loads and RAG indexing.
 - **First pull & run:**
   - `docker pull ghcr.io/open-webui/open-webui:cuda`
   - `docker run -d --gpus all -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:cuda`
@@ -55,7 +55,7 @@ OS Build	19045.6466
 
 > Docker-Desktop (UI) is installed on windows from the WSL ("\\wsl.localhost\docker-desktop") 
 
-> Docker will pull the latest image best suited for my windows host running ollama FIRST, then apply any modifications in /openwebui_custom. The /static folder should go to the expected location in the backend of the container image, replacing any defalut contents from the pulled docker container. Data in this dir will be used for migration of backend files between undates when necessary, and also store any memories to be imported. /Replace/ will be used for any persistant modifications to the stock image, and the contents should be applied over container defaults (eg- a modified index.html or something else outside of the typical backend static)
+> Docker will pull the latest image best suited for windows host running ollama FIRST, then apply any modifications in /openwebui_custom. The /static folder should go to the expected location in the backend of the container image, replacing any defalut contents from the pulled docker container. Data in this dir will be used for migration of backend files between undates when necessary, and also store any memories to be imported. /Replace/ will be used for any persistant modifications to the stock image, and the contents should be applied over container defaults (eg- a modified index.html or something else outside of the typical backend static)
 
 
 
