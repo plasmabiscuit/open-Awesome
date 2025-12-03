@@ -3,6 +3,26 @@ All the context and documentation a dumbass LLM might need to not fuckup my dock
 
 !important ALWAYS CHECK THE DOCUMENTATION BEFORE MAKING OR SUGGESTING MAJOR CHANGES
 
+# Codespace quickstart
+
+- **Base image & resources:** Start from the CUDA-enabled image `ghcr.io/open-webui/open-webui:cuda` so GPU workflows just work. Allocate at least 4 vCPUs, 16 GB RAM, and a GPU with ~8 GB VRAM for smoother model loads and RAG indexing.
+- **First pull & run:**
+  - `docker pull ghcr.io/open-webui/open-webui:cuda`
+  - `docker run -d --gpus all -p 3000:8080 -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:cuda`
+- **Apply overlays after pulls:**
+  - `openwebui-custom/static/` replaces the container’s `/app/backend/static/` contents so icons, CSS, and loader assets stay customized between updates.
+  - `Replace/` is for one-off file overrides outside the normal static path (for example, a patched `index.html`). Copy its contents over the container filesystem after each pull or rebuild.
+- **Read next:**
+  - [Manual Docker quick start](Documentation/Essential/Docker/ManualDocker.md)
+  - [Compose layout](Documentation/Essential/Docker/DockerCompose.md)
+  - [Update flow](Documentation/Essential/Docker/DockerUpdating.md)
+  - [Data & backup notes](Documentation/Essential/Data%20and%20Backups/backups.md)
+
+### Windows notes (keep separate from cloud/codespace defaults)
+
+- Docker Desktop runs inside WSL; use `\\wsl$\docker-desktop-data` for volume inspection and keep model paths on `F:\.ollama\models` as configured below.
+- When copying overlays, translate Windows paths (e.g., `C:\workspace\openwebui-custom\static`) to the container with `docker cp` instead of relying on bind mounts that expect Linux-style paths.
+
 # Host System Info
 
 ## Device Specs
